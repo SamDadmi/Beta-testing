@@ -1,0 +1,8 @@
+{
+  "name": "Effectual",
+  "description": "Next-generation STEM learning and exploration platform. Conceptualize complex concepts and build your personal knowledge graph with our high-fidelity interactive engine.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
