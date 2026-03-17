@@ -146,8 +146,13 @@ export const AboutUs: React.FC = () => {
     const container = svg.node()?.parentElement;
     if (!container) return;
 
-    const W = container.clientWidth;
-    const H = container.clientHeight;
+    const W = container.offsetWidth  || 600;
+    const H = container.offsetHeight || 480;
+
+    svg
+      .attr('width',   W)
+      .attr('height',  H)
+      .attr('viewBox', `0 0 ${W} ${H}`);
 
     svg.selectAll('*').remove();
 
@@ -180,12 +185,20 @@ export const AboutUs: React.FC = () => {
     const simulation = d3
       .forceSimulation<NodeData>()
       .force('link', d3.forceLink<NodeData, LinkData>().id((d) => d.id).distance(100).strength(0.6))
-      .force('charge', d3.forceManyBody<NodeData>().strength(-180))
+      .force('charge', d3.forceManyBody<NodeData>().strength(-120))
       .force('center', d3.forceCenter(W / 2, H * 0.44))
+      .force('x', d3.forceX(W / 2).strength(0.08))
+      .force('y', d3.forceY(H * 0.44).strength(0.08))
       .force('collision', d3.forceCollide(26))
       .alphaDecay(0.022);
 
     simulation.on('tick', () => {
+      const PAD = 70;
+      simulation.nodes().forEach((d: any) => {
+        d.x = Math.max(PAD, Math.min(W - PAD, d.x));
+        d.y = Math.max(PAD, Math.min(H - 100, d.y)); // leave room for bottom card
+      });
+
       linkG.selectAll('path.link').attr('d', (d: any) => {
         const dx = d.target.x - d.source.x;
         const dy = d.target.y - d.source.y;
@@ -345,7 +358,7 @@ export const AboutUs: React.FC = () => {
       />
 
       {/* Main content */}
-      <div className="relative z-[2] flex h-screen px-16 py-[52px] gap-12 items-center">
+      <div className="relative z-[2] flex min-h-screen px-16 py-[52px] gap-12 items-center">
         {/* Left side */}
         <div className="flex-[0_0_46%] flex flex-col">
           {/* Badge */}
@@ -426,8 +439,8 @@ export const AboutUs: React.FC = () => {
         </div>
 
         {/* Right side - Graph card */}
-        <div className="flex-1 h-full flex items-center justify-center">
-          <div className="relative w-full h-[90%] rounded-[26px] bg-[linear-gradient(155deg,#122540_0%,#0d1e35_40%,#091828_100%)] border border-[rgba(255,255,255,0.06)] overflow-hidden shadow-[0_48px_96px_rgba(0,0,0,0.7),0_16px_32px_rgba(0,0,0,0.5),0_1px_0_rgba(255,255,255,0.07)_inset,0_-1px_0_rgba(0,0,0,0.6)_inset,1px_0_0_rgba(255,255,255,0.03)_inset,-1px_0_0_rgba(255,255,255,0.03)_inset,0_0_60px_rgba(45,217,180,0.04)_inset] animate-[floatCard_7s_ease-in-out_infinite]">
+        <div className="flex-1 flex items-center justify-center py-4">
+          <div className="relative w-full rounded-[26px] bg-[linear-gradient(155deg,#122540_0%,#0d1e35_40%,#091828_100%)] border border-[rgba(255,255,255,0.06)] overflow-hidden shadow-[0_48px_96px_rgba(0,0,0,0.7),0_16px_32px_rgba(0,0,0,0.5),0_1px_0_rgba(255,255,255,0.07)_inset,0_-1px_0_rgba(0,0,0,0.6)_inset,1px_0_0_rgba(255,255,255,0.03)_inset,-1px_0_0_rgba(255,255,255,0.03)_inset,0_0_60px_rgba(45,217,180,0.04)_inset] animate-[floatCard_7s_ease-in-out_infinite]" style={{ height: 500 }}>
             {/* Live pill */}
             <div className="absolute top-5 left-5 z-10 flex items-center gap-[7px] px-[14px] py-[6px] rounded-[20px] bg-[rgba(45,217,180,0.08)] border border-[rgba(45,217,180,0.22)] text-[10px] tracking-[0.14em] uppercase text-[#2dd9b4] backdrop-blur-[10px] shadow-[0_2px_12px_rgba(45,217,180,0.12),inset_0_1px_0_rgba(255,255,255,0.05)]">
               <div className="w-[6px] h-[6px] rounded-full bg-[#2dd9b4] shadow-[0_0_8px_#2dd9b4] animate-pulse" />

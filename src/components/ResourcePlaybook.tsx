@@ -1015,20 +1015,6 @@ export default function ResourcePlaybook() {
         <div className="bg-accent" ref={bgAccentRef}></div>
       </div>
 
-      {/* Navigation */}
-      <nav className={`nav${scrolled ? " scrolled" : ""}`} id="navbar">
-        <div className="nav-container">
-          <div className="logo">Effectual<span className="logo-accent">L</span></div>
-          <ul className="nav-links">
-            <li><a href="#resources">Resources</a></li>
-            <li><a href="#knowledge">Knowledge</a></li>
-            <li><a href="#tools">Tools</a></li>
-            <li><a href="#docs">Documentation</a></li>
-            <li><button className="btn-primary">Get Started</button></li>
-          </ul>
-        </div>
-      </nav>
-
       {/* Hero */}
       <section className="hero">
         <div className="hero-content">
@@ -1094,54 +1080,6 @@ export default function ResourcePlaybook() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="footer">
-        <div className="footer-content">
-          <div className="footer-brand">
-            <h3>Effectual<span className="logo-accent">L</span></h3>
-            <p>Professional STEM learning platform for researchers, educators, and advanced learners worldwide.</p>
-          </div>
-
-          <div className="footer-column">
-            <h4>Platform</h4>
-            <ul className="footer-links">
-              <li><a href="#">Knowledge Graphs</a></li>
-              <li><a href="#">Simulations</a></li>
-              <li><a href="#">Generators</a></li>
-              <li><a href="#">Analysis Tools</a></li>
-            </ul>
-          </div>
-
-          <div className="footer-column">
-            <h4>Resources</h4>
-            <ul className="footer-links">
-              <li><a href="#">Documentation</a></li>
-              <li><a href="#">API Reference</a></li>
-              <li><a href="#">Tutorials</a></li>
-              <li><a href="#">Research</a></li>
-            </ul>
-          </div>
-
-          <div className="footer-column">
-            <h4>Company</h4>
-            <ul className="footer-links">
-              <li><a href="#">About</a></li>
-              <li><a href="#">Careers</a></li>
-              <li><a href="#">Contact</a></li>
-              <li><a href="#">Blog</a></li>
-            </ul>
-          </div>
-        </div>
-
-        <div className="footer-bottom">
-          <p>&copy; 2026 EffectualL. All rights reserved.</p>
-          <div className="footer-links-inline">
-            <a href="#">Privacy</a>
-            <a href="#">Terms</a>
-            <a href="#">Security</a>
-          </div>
-        </div>
-      </footer>
     </>
   );
 }
