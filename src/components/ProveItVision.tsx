@@ -107,7 +107,7 @@ async function generateProveItProblems(topic: string, subject: string, grade: st
       "X-Title": "EffectuaL ProveItVision",
     },
     body: JSON.stringify({
-      model: "anthropic/claude-haiku-4-5",
+      model: "anthropic/claude-3-haiku",
       temperature: 0.6,
       max_tokens: 1800,
       messages: [{
@@ -159,7 +159,7 @@ async function transcribeCanvas(base64: string): Promise<string> {
       "X-Title": "EffectuaL ProveItVision",
     },
     body: JSON.stringify({
-      model: "anthropic/claude-haiku-4-5",
+      model: "anthropic/claude-3-haiku",
       temperature: 0,
       max_tokens: 600,
       messages: [{
@@ -277,7 +277,7 @@ OUTPUT — JSON ONLY, NO OTHER TEXT
       "X-Title": "EffectuaL ProveItVision",
     },
     body: JSON.stringify({
-      model: "anthropic/claude-haiku-4-5",
+      model: "anthropic/claude-3-haiku",
       temperature: 0,
       max_tokens: 2000,
       messages: [{ role: "user", content: gradePrompt }],

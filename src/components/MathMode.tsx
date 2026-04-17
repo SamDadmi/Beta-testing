@@ -244,7 +244,7 @@ JSON SCHEMA:
       "X-Title": "EffectuaL Math Mode",
     },
     body: JSON.stringify({
-      model: "anthropic/claude-haiku-4-5",
+      model: "anthropic/claude-3-haiku",
       messages: [{ role: "system", content: systemPrompt }, { role: "user", content: question }],
       temperature: 0.4, max_tokens: 2500,
     }),
@@ -285,7 +285,7 @@ async function generateProveItProblems(topic: string, subject: string, grade: st
       "X-Title": "EffectuaL Math Mode",
     },
     body: JSON.stringify({
-      model: "anthropic/claude-haiku-4-5",
+      model: "anthropic/claude-3-haiku",
       temperature: 0.6,
       max_tokens: 1400,
       messages: [{
@@ -334,7 +334,7 @@ async function gradeProveIt(
       "X-Title": "EffectuaL Math Mode",
     },
     body: JSON.stringify({
-      model: "anthropic/claude-haiku-4-5",
+      model: "anthropic/claude-3-haiku",
       temperature: 0.2,
       max_tokens: 400,
       messages: [{
@@ -1296,7 +1296,7 @@ async function generateQuiz(topic: string, subject: string, grade: string): Prom
       "X-Title": "EffectuaL Math Mode",
     },
     body: JSON.stringify({
-      model: "anthropic/claude-haiku-4-5",
+      model: "anthropic/claude-3-haiku",
       temperature: 0.5,
       max_tokens: 1800,
       messages: [{
